@@ -1,3 +1,3 @@
-FILES="./hash_table.c ./linked_list.c ./test.c"
-gcc ${FILES} -o ./test && ./test
-rm ./test
+FILES="src/hash_table.c src/linked_list.c src/test.c"
+gcc ${FILES} -o src/test && src/test
+rm src/test

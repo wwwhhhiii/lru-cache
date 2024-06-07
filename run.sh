@@ -1,2 +1,2 @@
-gcc ./hash_table.c ./linked_list.c ./main.c -o ./main && ./main
-rm ./main
+gcc src/hash_table.c src/linked_list.c src/main.c -o src/main && src/main
+rm src/main
