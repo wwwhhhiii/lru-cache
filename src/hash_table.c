@@ -4,10 +4,9 @@
 
 #include "hash_table.h"
 
-HashTable* create_hash_table(const char name[])
+HashTable* create_hash_table()
 {
     HashTable* t = malloc(sizeof(HashTable));
-    strcpy(t->name, name);
     // TODO add checks
 
     return t;

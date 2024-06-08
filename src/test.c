@@ -8,19 +8,14 @@
 
 void test_hash_table_create()
 {
-    const char name[] = "test_table";
-    HashTable* table = create_hash_table(name);
-    int equal = strcmp(table->name, name);
-    assert (equal == 0);
+    HashTable* table = create_hash_table();
 
     free(table);
 }
 
 void test_hash_table_add_item()
 {
-    const char name[] = "test_table";
     HashTable* table = malloc(sizeof(HashTable));
-    strcpy(table->name, name);
 
     const char key[] = "some random key";
     int value_to_add = 500;
@@ -34,9 +29,7 @@ void test_hash_table_add_item()
 
 void test_hash_table_get_item()
 {
-    const char name[] = "table";
     HashTable* table = malloc(sizeof(HashTable));
-    strcpy(table->name, name);
 
     const char key[] = "some_random_key";
     int val_to_add = 222;
@@ -52,9 +45,7 @@ void test_hash_table_get_item()
 
 void test_hash_table_remove_item()
 {
-    const char name[] = "table";
     HashTable* table = malloc(sizeof(HashTable));
-    strcpy(table->name, name);
 
     const char key[] = "some_rnd_key";
     int val = 333;
