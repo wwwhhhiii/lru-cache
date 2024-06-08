@@ -1,3 +1,6 @@
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
+
 #include <stdlib.h>
 
 typedef struct node ListNode;
@@ -33,3 +36,5 @@ ListNode* remove_node_by_value(LinkedList* list, int value);
 ListNode* remove_node(LinkedList* list, ListNode* node);
 
 void print_linked_list(LinkedList* list);
+
+#endif
