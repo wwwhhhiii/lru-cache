@@ -40,7 +40,7 @@ add_item(HashTable* t, const char key[], int item)
 }
 
 int
-get_item(HashTable* t, const char key[], int default_v)
+get_item(const HashTable* t, const char key[], int default_v)
 {
     int hash = _hash_string(key);
     int val = t->values[hash];
