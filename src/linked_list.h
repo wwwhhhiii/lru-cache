@@ -1,32 +1,35 @@
 #include <stdlib.h>
 
-struct ListNode {
+typedef struct node ListNode;
+typedef struct list LinkedList;
+
+struct node {
     int val;
-    struct ListNode* next;
-    struct ListNode* prev;
+    ListNode* next;
+    ListNode* prev;
 };
 
-struct LinkedList {
-    struct ListNode* head;
-    struct ListNode* tail;
+struct list {
+    ListNode* head;
+    ListNode* tail;
 };
 
-struct ListNode*
+ListNode*
 create_node(int value);
 
-struct LinkedList*
+LinkedList*
 create_linked_list();
 
-void destroy_linked_list(struct LinkedList** list);
+void destroy_linked_list(LinkedList** list);
 
-void append_node(struct LinkedList* list, struct ListNode* node);
+void append_node(LinkedList* list, ListNode* node);
 
-struct ListNode* find_node_by_value(const struct LinkedList* list, int value);
+ListNode* find_node_by_value(const LinkedList* list, int value);
 
-struct ListNode* find_node(const struct LinkedList* list, const struct ListNode* node);
+ListNode* find_node(const LinkedList* list, const ListNode* node);
 
-struct ListNode* remove_node_by_value(struct LinkedList* list, int value);
+ListNode* remove_node_by_value(LinkedList* list, int value);
 
-struct ListNode* remove_node(struct LinkedList* list, struct ListNode* node);
+ListNode* remove_node(LinkedList* list, ListNode* node);
 
-void print_linked_list(struct LinkedList* list);
+void print_linked_list(LinkedList* list);

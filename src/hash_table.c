@@ -4,9 +4,9 @@
 
 #include "hash_table.h"
 
-struct HashTable* create_hash_table(const char name[])
+HashTable* create_hash_table(const char name[])
 {
-    struct HashTable* t = malloc(sizeof(struct HashTable));
+    HashTable* t = malloc(sizeof(HashTable));
     strcpy(t->name, name);
     // TODO add checks
 
@@ -34,14 +34,14 @@ _hash_string(const char s[])
 }
 
 void 
-add_item(struct HashTable* t, const char key[], int item)
+add_item(HashTable* t, const char key[], int item)
 {
     int hash = _hash_string(key);
     t->values[hash] = item;
 }
 
 int
-get_item(struct HashTable* t, const char key[], int default_v)
+get_item(HashTable* t, const char key[], int default_v)
 {
     int hash = _hash_string(key);
     int val = t->values[hash];
@@ -53,7 +53,7 @@ get_item(struct HashTable* t, const char key[], int default_v)
 }
 
 int
-remove_item(struct HashTable* t, const char key[])
+remove_item(HashTable* t, const char key[])
 {
     int hash = _hash_string(key);
     int val = t->values[hash];

@@ -9,7 +9,7 @@
 void test_hash_table_create()
 {
     const char name[] = "test_table";
-    struct HashTable* table = create_hash_table(name);
+    HashTable* table = create_hash_table(name);
     int equal = strcmp(table->name, name);
     assert (equal == 0);
 
@@ -19,7 +19,7 @@ void test_hash_table_create()
 void test_hash_table_add_item()
 {
     const char name[] = "test_table";
-    struct HashTable* table = malloc(sizeof(struct HashTable));
+    HashTable* table = malloc(sizeof(HashTable));
     strcpy(table->name, name);
 
     const char key[] = "some random key";
@@ -35,7 +35,7 @@ void test_hash_table_add_item()
 void test_hash_table_get_item()
 {
     const char name[] = "table";
-    struct HashTable* table = malloc(sizeof(struct HashTable));
+    HashTable* table = malloc(sizeof(HashTable));
     strcpy(table->name, name);
 
     const char key[] = "some_random_key";
@@ -53,7 +53,7 @@ void test_hash_table_get_item()
 void test_hash_table_remove_item()
 {
     const char name[] = "table";
-    struct HashTable* table = malloc(sizeof(struct HashTable));
+    HashTable* table = malloc(sizeof(HashTable));
     strcpy(table->name, name);
 
     const char key[] = "some_rnd_key";
@@ -71,7 +71,7 @@ void test_hash_table_remove_item()
 void test_create_node()
 {
     int val = 5;
-    struct ListNode* node = create_node(val);
+    ListNode* node = create_node(val);
     
     assert (node->val == val);
     assert (node->next == NULL && node->prev == NULL);
@@ -81,7 +81,7 @@ void test_create_node()
 
 void test_create_linked_list()
 {
-    struct LinkedList* list = create_linked_list();
+    LinkedList* list = create_linked_list();
 
     assert (list->head == NULL);
     assert (list->tail == NULL);
@@ -91,13 +91,13 @@ void test_create_linked_list()
 
 void test_destroy_linked_list()
 {
-    struct LinkedList* list = create_linked_list();
+    LinkedList* list = create_linked_list();
 
     int elems_num = 10;
-    struct ListNode* nodes[elems_num];
+    ListNode* nodes[elems_num];
 
     for (int i = 0; i < elems_num; i++) {
-        struct ListNode* node = create_node(i);
+        ListNode* node = create_node(i);
         nodes[i] = node;
         append_node(list, node);
     }
@@ -110,8 +110,8 @@ void test_destroy_linked_list()
 
 void test_append_node_to_list()
 {
-    struct LinkedList* list = create_linked_list();
-    struct ListNode* node = create_node(11);
+    LinkedList* list = create_linked_list();
+    ListNode* node = create_node(11);
 
     append_node(list, node);
 
@@ -125,17 +125,17 @@ void test_append_node_to_list()
 
 void test_find_node_by_value()
 {
-    struct LinkedList* list = create_linked_list();
+    LinkedList* list = create_linked_list();
     
     for (int i = 0; i < 10; i++) {
         append_node(list, create_node(i));
     }
 
-    struct ListNode* node_3 = find_node_by_value(list, 3);
+    ListNode* node_3 = find_node_by_value(list, 3);
     assert (node_3 != NULL && node_3->val == 3);
-    struct ListNode* node_5 = find_node_by_value(list, 5);
+    ListNode* node_5 = find_node_by_value(list, 5);
     assert (node_5 != NULL && node_5->val == 5);
-    struct ListNode* node_8 = find_node_by_value(list, 8);
+    ListNode* node_8 = find_node_by_value(list, 8);
     assert (node_8 != NULL && node_8->val == 8);
 
     free(list);
@@ -143,41 +143,41 @@ void test_find_node_by_value()
 
 void test_find_node()
 {
-    struct LinkedList* list = create_linked_list();
+    LinkedList* list = create_linked_list();
 
     int elems_num = 10;
-    struct ListNode* nodes[elems_num];
+    ListNode* nodes[elems_num];
 
     for (int i = 0; i < elems_num; i++) {
-        struct ListNode* node = create_node(i);
+        ListNode* node = create_node(i);
         nodes[i] = node;
         append_node(list, node);
     }
 
-    struct ListNode* node_3 = find_node(list, nodes[3]);
+    ListNode* node_3 = find_node(list, nodes[3]);
     assert (node_3 != NULL);
     assert (node_3 == nodes[3]);
 
-    struct ListNode* node_6 = find_node(list, nodes[6]);
+    ListNode* node_6 = find_node(list, nodes[6]);
     assert (node_6 != NULL);
     assert (node_6 == nodes[6]);
 }
 
 void test_remove_node_by_value()
 {
-    struct LinkedList* list = create_linked_list();
+    LinkedList* list = create_linked_list();
 
     int elems_num = 10;
-    struct ListNode* nodes[elems_num];
+    ListNode* nodes[elems_num];
 
     for (int i = 0; i < elems_num; i++) {
-        struct ListNode* node = create_node(i);
+        ListNode* node = create_node(i);
         nodes[i] = node;
         append_node(list, node);
     }
 
     // node removal in middle
-    struct ListNode* removed_node = remove_node_by_value(list, 5);
+    ListNode* removed_node = remove_node_by_value(list, 5);
     assert (removed_node != NULL);
     assert (removed_node->val == 5);
     assert (removed_node == nodes[5]);
@@ -204,19 +204,19 @@ void test_remove_node_by_value()
 
 void test_remove_node()
 {
-    struct LinkedList* list = create_linked_list();
+    LinkedList* list = create_linked_list();
 
     int elems_num = 10;
-    struct ListNode* nodes[elems_num];
+    ListNode* nodes[elems_num];
 
     for (int i = 0; i < elems_num; i++) {
-        struct ListNode* node = create_node(i);
+        ListNode* node = create_node(i);
         nodes[i] = node;
         append_node(list, node);
     }
 
     // node removal in middle
-    struct ListNode* removed_node = remove_node(list, nodes[5]);
+    ListNode* removed_node = remove_node(list, nodes[5]);
     assert (removed_node != NULL);
     assert (removed_node == nodes[5]);
     assert (nodes[4]->next == nodes[6]);

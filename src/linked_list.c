@@ -6,10 +6,10 @@
 /// @brief Creates node with given value and no references
 /// @param value value to assign to node
 /// @return created node
-struct ListNode*
+ListNode*
 create_node(int value)
 {
-    struct ListNode* node = malloc(sizeof(struct ListNode));
+    ListNode* node = malloc(sizeof(ListNode));
     if (node == NULL) {
         return NULL;
     }
@@ -22,9 +22,9 @@ create_node(int value)
 /// @brief Creates an empty linked list
 /// if failed to allocate either list or node - returns NULL
 /// @return created linked list
-struct LinkedList* create_linked_list()
+LinkedList* create_linked_list()
 {
-    struct LinkedList* l = malloc(sizeof(struct LinkedList));
+    LinkedList* l = malloc(sizeof(LinkedList));
     if (l == NULL) {
         return NULL;
     }
@@ -37,16 +37,16 @@ struct LinkedList* create_linked_list()
 
 /// @brief Destroyes linked list and frees nodes occupied memroy
 /// @param list list to destroy
-void destroy_linked_list(struct LinkedList** list)
+void destroy_linked_list(LinkedList** list)
 {
     if (*list == NULL) {
         return;
     }
 
-    struct ListNode* cur_node = (*list)->head;
+    ListNode* cur_node = (*list)->head;
 
     while (cur_node) {
-        struct ListNode* del_node = cur_node;
+        ListNode* del_node = cur_node;
         cur_node = cur_node->next;
         free(del_node); // TODO mb store **node, then *node = NULL ?
     }
@@ -58,14 +58,14 @@ void destroy_linked_list(struct LinkedList** list)
 /// @brief Appends node to the end of the list
 /// @param list list to append to
 /// @param node node to append to list
-void append_node(struct LinkedList* list, struct ListNode* node)
+void append_node(LinkedList* list, ListNode* node)
 {
     if (list->tail == NULL) {
         // when no nodes are present in list
         list->head = node;
         list->tail = node;
     } else {
-        struct ListNode* tail_node = list->tail;
+        ListNode* tail_node = list->tail;
         tail_node->next = node;
         node->prev = tail_node;
         list->tail = node;
@@ -76,9 +76,9 @@ void append_node(struct LinkedList* list, struct ListNode* node)
 /// @param list - list to search node in
 /// @param node - node to search for
 /// @return pointer to found node
-struct ListNode* find_node(const struct LinkedList* list, const struct ListNode* node)
+ListNode* find_node(const LinkedList* list, const ListNode* node)
 {
-    struct ListNode* cur_node = list->head;
+    ListNode* cur_node = list->head;
 
     while (cur_node) {
         if (cur_node == node) {
@@ -95,10 +95,10 @@ struct ListNode* find_node(const struct LinkedList* list, const struct ListNode*
 /// @param list list to search
 /// @param value value to search by
 /// @return found node
-struct ListNode*
-find_node_by_value(const struct LinkedList* list, int value)
+ListNode*
+find_node_by_value(const LinkedList* list, int value)
 {
-    struct ListNode* cur_node = list->head;
+    ListNode* cur_node = list->head;
 
     while (cur_node) {
         if (cur_node->val == value) {
@@ -114,10 +114,10 @@ find_node_by_value(const struct LinkedList* list, int value)
 /// @param list list to remove node from
 /// @param value value of node to remove
 /// @return removed node
-struct ListNode*
-remove_node_by_value(struct LinkedList* list, int value)
+ListNode*
+remove_node_by_value(LinkedList* list, int value)
 {
-    struct ListNode* node_to_rm = find_node_by_value(list, value);
+    ListNode* node_to_rm = find_node_by_value(list, value);
     if (node_to_rm == NULL) {
         return NULL;
     }
@@ -142,14 +142,14 @@ remove_node_by_value(struct LinkedList* list, int value)
 /// @param list linked list to remove node from
 /// @param node node to remove from list
 /// @returns removed node
-struct ListNode*
-remove_node(struct LinkedList* list, struct ListNode* node)
+ListNode*
+remove_node(LinkedList* list, ListNode* node)
 {
     if (node == NULL) {
         return NULL;
     }
 
-    struct ListNode* node_to_rm = find_node(list, node);
+    ListNode* node_to_rm = find_node(list, node);
 
     if (node_to_rm == NULL) {
         return NULL;
@@ -173,13 +173,13 @@ remove_node(struct LinkedList* list, struct ListNode* node)
 
 /// @brief Convinient print for linked list
 /// @param list list to print
-void print_linked_list(struct LinkedList* list)
+void print_linked_list(LinkedList* list)
 {
     if (list == NULL) {
         return;
     }
 
-    struct ListNode* cur_node = list->head;
+    ListNode* cur_node = list->head;
 
     while (cur_node) {
         if (cur_node == list->head) {

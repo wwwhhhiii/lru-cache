@@ -6,8 +6,8 @@
 
 int main()
 {
-    struct HashTable* table = create_hash_table("table");
-    struct LinkedList* list = create_linked_list();
+    HashTable* table = create_hash_table("table");
+    LinkedList* list = create_linked_list();
 
     // ...
 
